@@ -66,6 +66,9 @@ class Editor extends React.Component {
         agent.Articles.update(Object.assign(article, slug)) :
         agent.Articles.create(article);
 
+      // Keep the editor state until the submission succeeds so that
+      // validation errors remain visible when the request fails.
+      promise.then(() => this.props.onUnload());
       this.props.onSubmit(promise);
     };
   }
