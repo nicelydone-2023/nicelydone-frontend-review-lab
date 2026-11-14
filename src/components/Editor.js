@@ -67,6 +67,8 @@ class Editor extends React.Component {
         agent.Articles.create(article);
 
       this.props.onSubmit(promise);
+      // Clean up the editor state right away so the form resets promptly.
+      this.props.onUnload();
     };
   }
 
